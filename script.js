@@ -87,4 +87,9 @@ window.onclick = (event) => {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+
+    // Mjuk scroll till toppen när man klickar på logon eller länkar
+document.querySelector('.logo').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 };
