@@ -39,7 +39,19 @@ Varför vara försiktig:
     
     • Slutet system: 99% av kemikalierna och vattnet som används i tillverkningen återanvänds.
     • Komposterbart: Fibern är helt biologiskt nedbrytbar.
-    • Fuktabsorberande: Det transporterar bort fukt bättre än bomull.`
+    • Fuktabsorberande: Det transporterar bort fukt bättre än bomull.`,
+
+    silke: `Natursilke (Mullbärssilke) är ett av de mest hudvänliga materialen som finns.
+    
+• Hypoallergent: Silke drar inte till sig kvalster och är naturligt resistent mot mögel.
+• Fuktbevarande: Till skillnad från bomull absorberar inte silke hudens naturliga fukt, vilket är bra för torr hud.
+• Temperatur: Fungerar som en naturlig termostat – svalt på sommaren och värmande på vintern.`,
+
+    bambu: `Bambulyocell är ett modernt och hållbart sätt att använda den snabbväxande bambun.
+    
+• Miljövänlig process: Till skillnad från vanlig bambuviskos används här en giftfri process där vattnet återanvänds.
+• Extremt mjukt: Känns som en blandning mellan silke och bomull.
+• Antibakteriellt: Bambu har naturliga egenskaper som håller tyget fräscht längre.`
 };
 
 // Välj ut elementen från HTML
