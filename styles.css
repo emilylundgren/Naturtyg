@@ -105,7 +105,7 @@ h2 {
     padding: 5px 0;
     cursor: pointer;
     font-weight: 400;
-    margin-top: auto; /* Trycker ner knappen till botten om texten är kort */
+    margin-top: auto; 
     color: var(--text-main);
     font-size: 0.9rem;
     letter-spacing: 1px;
@@ -133,8 +133,8 @@ h2 {
     top: 0;
     width: 100%; 
     height: 100%;
-    background-color: rgba(74, 72, 66, 0.3); /* Mjuk skugga över bakgrunden */
-    backdrop-filter: blur(5px); /* Modern blur-effekt */
+    background-color: rgba(74, 72, 66, 0.3); 
+    backdrop-filter: blur(5px); 
 }
 
 .modal-content {
@@ -144,7 +144,7 @@ h2 {
     width: 90%;
     max-width: 550px;
     border: 1px solid var(--accent-color);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); /* Lyxig djup skugga */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); 
     position: relative;
     animation: modalAppear 0.4s ease-out;
 }
@@ -180,14 +180,80 @@ h2 {
     color: var(--text-main);
 }
 
+/* FOOTER STYLING */
+footer {
+    background-color: var(--white);
+    padding: 80px 20px 40px 20px;
+    border-top: 1px solid var(--accent-color);
+    margin-top: 100px;
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 50px;
+}
+
+.footer-section h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-section p, .footer-section ul li a {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 12px;
+}
+
+.footer-section ul li a:hover {
+    color: var(--text-main);
+}
+
+.footer-bottom {
+    max-width: 1100px;
+    margin: 60px auto 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid #F0EDE5;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
 /* Anpassning för små skärmar */
 @media (max-width: 600px) {
     .modal-content {
         padding: 30px;
+        width: 95%;
         margin: 5vh auto;
     }
     
     .hero h1 {
         font-size: 2rem;
+    }
+
+    footer {
+        padding: 60px 20px 30px 20px;
+        text-align: center;
+    }
+
+    .footer-section p {
+        margin: 0 auto;
     }
 }
