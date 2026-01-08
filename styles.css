@@ -4,6 +4,8 @@
     --text-main: #4A4842;
     --text-light: #8E8B82;
     --white: #FFFFFF;
+    --warning-bg: #F3EFE6; /* Subtil mörkare beige för undvik-sektionen */
+    --warning-border: #D1C7B7;
 }
 
 body {
@@ -12,10 +14,17 @@ body {
     color: var(--text-main);
     margin: 0;
     line-height: 1.6;
+    /* Mjuk fade-in när man laddar sidan */
+    animation: fadeInPage 1s ease-out;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 header {
-    padding: 60px 20px;
+    padding: 80px 20px;
     text-align: center;
     background-color: var(--white);
 }
@@ -26,20 +35,29 @@ h1, h2, .logo {
 }
 
 .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.hero p {
+    color: var(--text-light);
+    font-size: 1.1rem;
 }
 
 .grid-section {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 60px auto;
     padding: 0 20px;
 }
 
 h2 {
     text-align: center;
-    margin-bottom: 40px;
-    letter-spacing: 1px;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color: var(--text-light);
 }
 
 .card-container {
@@ -48,56 +66,128 @@ h2 {
     gap: 30px;
 }
 
+/* Standardkort för bra material */
 .card {
     background: var(--white);
-    padding: 40px;
+    padding: 45px;
     border: 1px solid var(--accent-color);
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+/* SPECIFIK STIL FÖR MATERIAL ATT UNDVIKA */
+.card.warning {
+    background-color: var(--warning-bg);
+    border-color: var(--warning-border);
+}
+
+.card.warning h3 {
+    color: #5D5A50;
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
 }
 
 .read-more {
+    align-self: flex-start;
     background: none;
     border: none;
     border-bottom: 1px solid var(--text-main);
     padding: 5px 0;
     cursor: pointer;
-    font-weight: bold;
-    margin-top: 20px;
+    font-weight: 400;
+    margin-top: auto; /* Trycker ner knappen till botten om texten är kort */
     color: var(--text-main);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: opacity 0.2s;
+}
+
+.read-more:hover {
+    opacity: 0.6;
 }
 
 .divider {
     border: 0;
     height: 1px;
     background: var(--accent-color);
-    margin: 80px 0;
+    margin: 100px auto;
+    max-width: 200px;
 }
 
-/* Modal/Popup-stil */
+/* LYXIG MODAL / POPUP-STIL */
 .modal {
     display: none;
     position: fixed;
-    z-index: 100;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.2);
+    z-index: 1000;
+    left: 0; 
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(74, 72, 66, 0.3); /* Mjuk skugga över bakgrunden */
+    backdrop-filter: blur(5px); /* Modern blur-effekt */
 }
 
 .modal-content {
     background-color: var(--bg-color);
-    margin: 10% auto;
-    padding: 40px;
-    width: 80%;
-    max-width: 600px;
+    margin: 10vh auto;
+    padding: 60px;
+    width: 90%;
+    max-width: 550px;
     border: 1px solid var(--accent-color);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); /* Lyxig djup skugga */
+    position: relative;
+    animation: modalAppear 0.4s ease-out;
+}
+
+@keyframes modalAppear {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .close-button {
-    float: right;
-    font-size: 28px;
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    font-size: 24px;
+    color: var(--text-light);
     cursor: pointer;
+    line-height: 1;
+}
+
+.close-button:hover {
+    color: var(--text-main);
+}
+
+#modal-title {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+#modal-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-main);
+}
+
+/* Anpassning för små skärmar */
+@media (max-width: 600px) {
+    .modal-content {
+        padding: 30px;
+        margin: 5vh auto;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
 }
