@@ -28,6 +28,18 @@ Varför vara försiktig:
 • Kemikalier: Framställningen kräver stora märker lösningsmedel som är skadliga för både arbetare och miljön.
 • Hudirritation: Många upplever att akryl "sticks" eller orsakar klåda då materialet inte kan reglera temperatur naturligt.
 • Brandfarligt: Till skillnad från naturmaterial smälter akryl vid hög värme, vilket utgör en säkerhetsrisk.`
+
+    bomull: `Ekologisk bomull är ett mycket bättre val för både bönderna och jorden.
+    
+• Inga gifter: Inga syntetiska bekämpningsmedel används.
+• Vatten: Ofta används mer regnvatten än vid konventionell odling.
+• Hudvänligt: Inga kemikalierester finns kvar i det färdiga tyget.`,
+
+    tencel: `Tencel är ett varumärke för lyocell, en fiber som är både lyxig och miljövänlig.
+    
+    • Slutet system: 99% av kemikalierna och vattnet som används i tillverkningen återanvänds.
+    • Komposterbart: Fibern är helt biologiskt nedbrytbar.
+    • Fuktabsorberande: Det transporterar bort fukt bättre än bomull.`
 };
 
 // Välj ut elementen från HTML
