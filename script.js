@@ -1,25 +1,68 @@
 const infoData = {
-    linne: "Ekologiskt linne kräver mycket lite bekämpningsmedel och vatten. Det är naturligt antibakteriellt och svalt mot huden, vilket gör det perfekt för allergiker.",
-    hampa: "Hampa är en robust växt som förbättrar jordmånen där den växer. Tyget är UV-resistent och blir bara mjukare ju mer du använder det.",
-    polyester: "Polyester är i grunden plast gjord av olja. Det andas dåligt, vilket kan irritera huden, och bidrar till den globala plastkrisen.",
-    akryl: "Akryl framställs med starka kemikalier. Det är ofta inte återvinningsbart och kan orsaka statisk elektricitet som är obekväm för huden."
+    linne: `Linne är ett av våra äldsta och mest miljövänliga textilmaterial, tillverkat av stjälkarna från linväxten. 
+
+Varför det är bra:
+• Minimal vattenåtgång: Lin kräver betydligt mindre vatten än bomull och kan ofta växa i regniga klimat utan extra bevattning.
+• Kemikaliefritt: Växten är naturligt tålig mot skadedjur och behöver därför sällan bekämpningsmedel.
+• Hudvänligt: Linne är naturligt antiseptiskt och transporterar bort fukt, vilket gör det idealiskt för känslig hud och varma nätter.
+• Hållbarhet: Det är ett av de starkaste naturfibrerna som finns och blir bara mjukare och vackrare för varje tvätt.`,
+
+    hampa: `Hampa beskrivs ofta som framtidens supermaterial. Det är en extremt snabbväxande planta som ger mer fiber per kvadratmeter än nästan något annat material.
+
+Fördelar för miljön och dig:
+• Regenerativt: Hampan förbättrar faktiskt jorden den växer i genom att binda koldioxid och rensa marken från tungmetaller.
+• Inga bekämpningsmedel: Plantan växer så tätt att ogräs inte får plats, vilket eliminerar behovet av gifter.
+• Skyddande: Tyget har ett naturligt UV-skydd och är resistent mot mögel.
+• Slitstyrka: Hampatyger är kända för att hålla i generationer.`,
+
+    polyester: `Polyester är ett syntetiskt material som i grunden är tillverkat av råolja (plast). Det är idag det vanligaste materialet i modeindustrin, men har ett högt pris för planeten.
+
+Problematiken:
+• Mikroplaster: Vid varje tvätt lossnar tusentals små plastpartiklar som hamnar i våra hav och till slut i näringskedjan.
+• Andningsförmåga: Syntetiska fibrer stänger in värme och fukt mot huden, vilket kan leda till irritation och obehag.
+• Ej biologiskt nedbrytbart: En tröja i polyester kan ta flera hundra år att brytas ner i naturen.`,
+
+    akryl: `Akryl är ett syntetiskt fiber som ofta används som ett billigt alternativ till ull. Tyvärr är det ett av de mest kemikalieintensiva materialen att framställa.
+
+Varför vara försiktig:
+• Kemikalier: Framställningen kräver stora märker lösningsmedel som är skadliga för både arbetare och miljön.
+• Hudirritation: Många upplever att akryl "sticks" eller orsakar klåda då materialet inte kan reglera temperatur naturligt.
+• Brandfarligt: Till skillnad från naturmaterial smälter akryl vid hög värme, vilket utgör en säkerhetsrisk.`
 };
 
+// Välj ut elementen från HTML
 const modal = document.getElementById("modal");
 const modalTitle = document.getElementById("modal-title");
 const modalText = document.getElementById("modal-text");
 const closeBtn = document.querySelector(".close-button");
 
+// Lägg till klick-funktion på alla "Läs mer"-knappar
 document.querySelectorAll('.read-more').forEach(button => {
     button.addEventListener('click', () => {
         const target = button.getAttribute('data-target');
+        
+        // Hitta rubriken i det kortet man klickade på
         modalTitle.innerText = button.parentElement.querySelector('h3').innerText;
+        
+        // Se till att radbrytningar visas korrekt
+        modalText.style.whiteSpace = "pre-line"; 
+        
+        // Hämta rätt text från infoData baserat på knappens data-target
         modalText.innerText = infoData[target];
+        
+        // Visa modalen
         modal.style.display = "block";
     });
 });
 
-closeBtn.onclick = () => modal.style.display = "none";
+// Stäng modalen när man klickar på X
+closeBtn.onclick = () => {
+    modal.style.display = "none";
+};
+
+// Stäng modalen om man klickar utanför själva rutan
 window.onclick = (event) => {
-    if (event.target == modal) modal.style.display = "none";
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 };
