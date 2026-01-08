@@ -34,6 +34,11 @@ h1, h2, .logo {
     font-weight: 400;
 }
 
+.logo {
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
 .hero h1 {
     font-size: 2.8rem;
     margin-bottom: 15px;
@@ -66,7 +71,7 @@ h2 {
     gap: 30px;
 }
 
-/* Standardkort för bra material */
+/* --- KORT STYLING --- */
 .card {
     background: var(--white);
     padding: 45px;
@@ -81,7 +86,6 @@ h2 {
     box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
 
-/* SPECIFIK STIL FÖR MATERIAL ATT UNDVIKA */
 .card.warning {
     background-color: var(--warning-bg);
     border-color: var(--warning-border);
@@ -97,23 +101,56 @@ h2 {
     margin-bottom: 15px;
 }
 
+/* --- NY PROFFSIGARE KNAPP --- */
 .read-more {
     align-self: flex-start;
     background: none;
     border: none;
-    border-bottom: 1px solid var(--text-main);
+    position: relative;
     padding: 5px 0;
     cursor: pointer;
-    font-weight: 400;
+    font-weight: 500;
     margin-top: auto; 
     color: var(--text-main);
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    transition: opacity 0.2s;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
 }
 
-.read-more:hover {
-    opacity: 0.6;
+/* Den växande linjen under knappen */
+.read-more::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text-main);
+    transform-origin: bottom right;
+    transition: transform 0.4s ease-out;
+}
+
+.read-more:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* --- SCROLL REVEAL FUNKTIONEN --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* En liten fördröjning för varannan box så de inte poppar upp exakt samtidigt */
+.card-container article:nth-child(even).reveal {
+    transition-delay: 0.15s;
 }
 
 .divider {
@@ -124,7 +161,7 @@ h2 {
     max-width: 200px;
 }
 
-/* LYXIG MODAL / POPUP-STIL */
+/* --- LYXIG MODAL / POPUP-STIL --- */
 .modal {
     display: none;
     position: fixed;
@@ -180,7 +217,7 @@ h2 {
     color: var(--text-main);
 }
 
-/* FOOTER STYLING */
+/* --- FOOTER STYLING --- */
 footer {
     background-color: var(--white);
     padding: 80px 20px 40px 20px;
@@ -236,7 +273,7 @@ footer {
     letter-spacing: 1px;
 }
 
-/* Anpassning för små skärmar */
+/* --- ANPASSNING FÖR SMÅ SKÄRMAR --- */
 @media (max-width: 600px) {
     .modal-content {
         padding: 30px;

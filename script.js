@@ -25,9 +25,9 @@ Problematiken:
     akryl: `Akryl är ett syntetiskt fiber som ofta används som ett billigt alternativ till ull. Tyvärr är det ett av de mest kemikalieintensiva materialen att framställa.
 
 Varför vara försiktig:
-• Kemikalier: Framställningen kräver stora märker lösningsmedel som är skadliga för både arbetare och miljön.
+• Kemikalier: Framställningen kräver stora märker lösningsmedel som är schadliga för både arbetare och miljön.
 • Hudirritation: Många upplever att akryl "sticks" eller orsakar klåda då materialet inte kan reglera temperatur naturligt.
-• Brandfarligt: Till skillnad från naturmaterial smälter akryl vid hög värme, vilket utgör en säkerhetsrisk.`, // HÄR lade jag till kommatecknet som saknades!
+• Brandfarligt: Till skillnad från naturmaterial smälter akryl vid hög värme, vilket utgör en säkerhetsrisk.`,
 
     bomull: `Ekologisk bomull är ett mycket bättre val för både bönderna och jorden.
     
@@ -54,42 +54,51 @@ Varför vara försiktig:
 • Antibakteriellt: Bambu har naturliga egenskaper som håller tyget fräscht längre.`
 };
 
-// Välj ut elementen från HTML
+// 1. MODAL LOGIK
 const modal = document.getElementById("modal");
 const modalTitle = document.getElementById("modal-title");
 const modalText = document.getElementById("modal-text");
 const closeBtn = document.querySelector(".close-button");
 
-// Lägg till klick-funktion på alla "Läs mer"-knappar
 document.querySelectorAll('.read-more').forEach(button => {
     button.addEventListener('click', () => {
         const target = button.getAttribute('data-target');
-        
-        // Kontrollera om texten faktiskt finns i infoData för att undvika fel
         if (infoData[target]) {
             modalTitle.innerText = button.parentElement.querySelector('h3').innerText;
             modalText.style.whiteSpace = "pre-line"; 
             modalText.innerText = infoData[target];
             modal.style.display = "block";
-        } else {
-            console.error("Hittade ingen text för:", target);
         }
     });
 });
 
-// Stäng modalen när man klickar på X
-closeBtn.onclick = () => {
-    modal.style.display = "none";
+closeBtn.onclick = () => modal.style.display = "none";
+
+window.onclick = (event) => {
+    if (event.target == modal) modal.style.display = "none";
 };
 
-// Stäng modalen om man klickar utanför själva rutan
-window.onclick = (event) => {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-
-    // Mjuk scroll till toppen när man klickar på logon eller länkar
+// 2. LOGO/SCROLL LOGIK
 document.querySelector('.logo').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-};
+
+// 3. SCROLL REVEAL LOGIK
+function reveal() {
+    const reveals = document.querySelectorAll(".reveal");
+    for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 100; // Hur många pixlar av elementet som ska synas innan det dyker upp
+        
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        }
+    }
+}
+
+// Lyssna på scroll-händelser
+window.addEventListener("scroll", reveal);
+
+// Kör en gång direkt ifall några element redan är i bild när man laddar sidan
+reveal();
