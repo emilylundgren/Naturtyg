@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naturliga Tyger | Renhet & Hållbarhet</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">NATURTYG</div>
+        </nav>
+        <div class="hero">
+            <h1>Hållbara textilier för dig och miljön</h1>
+            <p>En guide till medvetna materialval i vardagen.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="grid-section">
+            <h2>Naturliga Favoriter</h2>
+            <div class="card-container">
+                <article class="card">
+                    <h3>Ekologiskt Linne</h3>
+                    <p>Linne är ett av världens mest hållbara material. Det andas naturligt och blir vackrare med tiden...</p>
+                    <button class="read-more" data-target="linne">Läs mer</button>
+                </article>
+
+                <article class="card">
+                    <h3>Hampa</h3>
+                    <p>Hampatyget är extremt slitstarkt och kräver minimalt med vatten vid odling jämfört med bomull...</p>
+                    <button class="read-more" data-target="hampa">Läs mer</button>
+                </article>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="grid-section">
+            <h2>Material att Undvika</h2>
+            <div class="card-container">
+                <article class="card warning">
+                    <h3>Polyester</h3>
+                    <p>Ett plastbaserat material som släpper ut mikroplaster i våra vatten vid varje tvätt...</p>
+                    <button class="read-more" data-target="polyester">Läs mer</button>
+                </article>
+
+                <article class="card warning">
+                    <h3>Konventionell Akryl</h3>
+                    <p>Framställs genom kemiska processer som kan irritera huden och belasta ekosystemet...</p>
+                    <button class="read-more" data-target="akryl">Läs mer</button>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
