@@ -27,7 +27,7 @@ Problematiken:
 Varför vara försiktig:
 • Kemikalier: Framställningen kräver stora märker lösningsmedel som är skadliga för både arbetare och miljön.
 • Hudirritation: Många upplever att akryl "sticks" eller orsakar klåda då materialet inte kan reglera temperatur naturligt.
-• Brandfarligt: Till skillnad från naturmaterial smälter akryl vid hög värme, vilket utgör en säkerhetsrisk.`
+• Brandfarligt: Till skillnad från naturmaterial smälter akryl vid hög värme, vilket utgör en säkerhetsrisk.`, // HÄR lade jag till kommatecknet som saknades!
 
     bomull: `Ekologisk bomull är ett mycket bättre val för både bönderna och jorden.
     
@@ -53,17 +53,15 @@ document.querySelectorAll('.read-more').forEach(button => {
     button.addEventListener('click', () => {
         const target = button.getAttribute('data-target');
         
-        // Hitta rubriken i det kortet man klickade på
-        modalTitle.innerText = button.parentElement.querySelector('h3').innerText;
-        
-        // Se till att radbrytningar visas korrekt
-        modalText.style.whiteSpace = "pre-line"; 
-        
-        // Hämta rätt text från infoData baserat på knappens data-target
-        modalText.innerText = infoData[target];
-        
-        // Visa modalen
-        modal.style.display = "block";
+        // Kontrollera om texten faktiskt finns i infoData för att undvika fel
+        if (infoData[target]) {
+            modalTitle.innerText = button.parentElement.querySelector('h3').innerText;
+            modalText.style.whiteSpace = "pre-line"; 
+            modalText.innerText = infoData[target];
+            modal.style.display = "block";
+        } else {
+            console.error("Hittade ingen text för:", target);
+        }
     });
 });
 
