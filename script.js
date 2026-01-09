@@ -54,7 +54,7 @@ Varför vara försiktig:
 • Antibakteriellt: Bambu har naturliga egenskaper som håller tyget fräscht längre.`
 };
 
-// 1. MODAL LOGIK
+// --- 1. MODAL LOGIK ---
 const modal = document.getElementById("modal");
 const modalTitle = document.getElementById("modal-title");
 const modalText = document.getElementById("modal-text");
@@ -63,7 +63,8 @@ const closeBtn = document.querySelector(".close-button");
 document.querySelectorAll('.read-more').forEach(button => {
     button.addEventListener('click', () => {
         const target = button.getAttribute('data-target');
-        if (infoData[target]) {
+        // Vi kollar om knappen tillhör ett kort (inte nyhetsbrevet)
+        if (target && infoData[target]) {
             modalTitle.innerText = button.parentElement.querySelector('h3').innerText;
             modalText.style.whiteSpace = "pre-line"; 
             modalText.innerText = infoData[target];
@@ -78,18 +79,18 @@ window.onclick = (event) => {
     if (event.target == modal) modal.style.display = "none";
 };
 
-// 2. LOGO/SCROLL LOGIK
+// --- 2. LOGO & MJUK SCROLL ---
 document.querySelector('.logo').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// 3. SCROLL REVEAL LOGIK
+// --- 3. SCROLL REVEAL LOGIK ---
 function reveal() {
     const reveals = document.querySelectorAll(".reveal");
     for (let i = 0; i < reveals.length; i++) {
         const windowHeight = window.innerHeight;
         const elementTop = reveals[i].getBoundingClientRect().top;
-        const elementVisible = 100; // Hur många pixlar av elementet som ska synas innan det dyker upp
+        const elementVisible = 100; 
         
         if (elementTop < windowHeight - elementVisible) {
             reveals[i].classList.add("active");
@@ -97,8 +98,17 @@ function reveal() {
     }
 }
 
-// Lyssna på scroll-händelser
 window.addEventListener("scroll", reveal);
+reveal(); // Kör en gång direkt
 
-// Kör en gång direkt ifall några element redan är i bild när man laddar sidan
-reveal();
+// --- 4. NYHETSBREV HANTERING ---
+const newsletterForm = document.getElementById('newsletter-form');
+const newsletterMessage = document.getElementById('newsletter-message');
+
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Stoppar sidan från att ladda om
+        newsletterForm.style.display = 'none'; // Döljer formuläret
+        newsletterMessage.style.display = 'block'; // Visar tack-texten
+    });
+}

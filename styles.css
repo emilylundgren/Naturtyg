@@ -4,7 +4,7 @@
     --text-main: #4A4842;
     --text-light: #8E8B82;
     --white: #FFFFFF;
-    --warning-bg: #F3EFE6; /* Subtil mörkare beige för undvik-sektionen */
+    --warning-bg: #F3EFE6;
     --warning-border: #D1C7B7;
 }
 
@@ -14,7 +14,6 @@ body {
     color: var(--text-main);
     margin: 0;
     line-height: 1.6;
-    /* Mjuk fade-in när man laddar sidan */
     animation: fadeInPage 1s ease-out;
 }
 
@@ -101,7 +100,7 @@ h2 {
     margin-bottom: 15px;
 }
 
-/* --- NY PROFFSIGARE KNAPP --- */
+/* --- KNAPP MED HOVER-EFFEKT --- */
 .read-more {
     align-self: flex-start;
     background: none;
@@ -117,7 +116,6 @@ h2 {
     text-transform: uppercase;
 }
 
-/* Den växande linjen under knappen */
 .read-more::after {
     content: '';
     position: absolute;
@@ -136,7 +134,57 @@ h2 {
     transform-origin: bottom left;
 }
 
-/* --- SCROLL REVEAL FUNKTIONEN --- */
+/* --- NYHETSBREV SEKTION --- */
+.newsletter {
+    background-color: var(--white);
+    padding: 100px 20px;
+    text-align: center;
+    border-top: 1px solid var(--accent-color);
+    margin-top: 40px;
+}
+
+.newsletter-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.newsletter p {
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+#newsletter-form {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+#newsletter-form input[type="email"] {
+    padding: 12px 15px;
+    border: 1px solid var(--accent-color);
+    background-color: var(--bg-color);
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    max-width: 300px;
+    outline: none;
+}
+
+#newsletter-form input[type="email"]:focus {
+    border-color: var(--text-main);
+}
+
+.newsletter .read-more {
+    margin-top: 0;
+    padding-bottom: 10px; /* Justering för att linjen ska hamna rätt */
+}
+
+/* --- SCROLL REVEAL --- */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -148,7 +196,6 @@ h2 {
     transform: translateY(0);
 }
 
-/* En liten fördröjning för varannan box så de inte poppar upp exakt samtidigt */
 .card-container article:nth-child(even).reveal {
     transition-delay: 0.15s;
 }
@@ -161,15 +208,13 @@ h2 {
     max-width: 200px;
 }
 
-/* --- LYXIG MODAL / POPUP-STIL --- */
+/* --- MODAL --- */
 .modal {
     display: none;
     position: fixed;
     z-index: 1000;
-    left: 0; 
-    top: 0;
-    width: 100%; 
-    height: 100%;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
     background-color: rgba(74, 72, 66, 0.3); 
     backdrop-filter: blur(5px); 
 }
@@ -193,36 +238,17 @@ h2 {
 
 .close-button {
     position: absolute;
-    right: 25px;
-    top: 20px;
+    right: 25px; top: 20px;
     font-size: 24px;
     color: var(--text-light);
     cursor: pointer;
-    line-height: 1;
 }
 
-.close-button:hover {
-    color: var(--text-main);
-}
-
-#modal-title {
-    margin-top: 0;
-    margin-bottom: 25px;
-    font-size: 2rem;
-}
-
-#modal-text {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--text-main);
-}
-
-/* --- FOOTER STYLING --- */
+/* --- FOOTER --- */
 footer {
     background-color: var(--white);
     padding: 80px 20px 40px 20px;
     border-top: 1px solid var(--accent-color);
-    margin-top: 100px;
 }
 
 .footer-content {
@@ -242,13 +268,6 @@ footer {
     letter-spacing: 1px;
 }
 
-.footer-section p, .footer-section ul li a {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
 .footer-section ul {
     list-style: none;
     padding: 0;
@@ -256,6 +275,13 @@ footer {
 
 .footer-section ul li {
     margin-bottom: 12px;
+}
+
+.footer-section ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
 }
 
 .footer-section ul li a:hover {
@@ -273,24 +299,21 @@ footer {
     letter-spacing: 1px;
 }
 
-/* --- ANPASSNING FÖR SMÅ SKÄRMAR --- */
+/* --- MOBILANPASSNING --- */
 @media (max-width: 600px) {
-    .modal-content {
-        padding: 30px;
-        width: 95%;
-        margin: 5vh auto;
+    .modal-content { padding: 30px; }
+    .hero h1 { font-size: 2rem; }
+    
+    #newsletter-form {
+        flex-direction: column;
+        width: 100%;
     }
     
-    .hero h1 {
-        font-size: 2rem;
+    #newsletter-form input[type="email"] {
+        max-width: 100%;
     }
-
-    footer {
-        padding: 60px 20px 30px 20px;
-        text-align: center;
-    }
-
-    .footer-section p {
-        margin: 0 auto;
+    
+    .newsletter {
+        padding: 60px 20px;
     }
 }
