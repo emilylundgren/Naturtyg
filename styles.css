@@ -22,10 +22,16 @@ body {
     to { opacity: 1; }
 }
 
+/* --- UPPDATERAD HEADER MED BILD --- */
 header {
-    padding: 80px 20px;
+    padding: 140px 20px;
     text-align: center;
-    background-color: var(--white);
+    /* Byt ut 'header-bg.jpg' till namnet på din bildfil */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('header-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    color: var(--white);
 }
 
 h1, h2, .logo {
@@ -38,17 +44,29 @@ h1, h2, .logo {
     letter-spacing: 2px;
 }
 
+/* Vi ser till att logon i headern alltid är vit */
+header .logo {
+    color: var(--white);
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
 .hero h1 {
-    font-size: 2.8rem;
+    font-size: 3rem; /* Lite större för mer effekt */
     margin-bottom: 15px;
     letter-spacing: -0.5px;
+    color: var(--white);
+    text-shadow: 0 2px 15px rgba(0,0,0,0.3); /* Skugga så texten poppar */
 }
 
 .hero p {
-    color: var(--text-light);
-    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
+/* --- RESTEN AV DIN KOD --- */
 .grid-section {
     max-width: 1100px;
     margin: 60px auto;
@@ -70,7 +88,6 @@ h2 {
     gap: 30px;
 }
 
-/* --- KORT STYLING --- */
 .card {
     background: var(--white);
     padding: 45px;
@@ -100,7 +117,6 @@ h2 {
     margin-bottom: 15px;
 }
 
-/* --- KNAPP MED HOVER-EFFEKT --- */
 .read-more {
     align-self: flex-start;
     background: none;
@@ -134,7 +150,6 @@ h2 {
     transform-origin: bottom left;
 }
 
-/* --- NYHETSBREV SEKTION --- */
 .newsletter {
     background-color: var(--white);
     padding: 100px 20px;
@@ -181,10 +196,9 @@ h2 {
 
 .newsletter .read-more {
     margin-top: 0;
-    padding-bottom: 10px; /* Justering för att linjen ska hamna rätt */
+    padding-bottom: 10px;
 }
 
-/* --- SCROLL REVEAL --- */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -208,7 +222,6 @@ h2 {
     max-width: 200px;
 }
 
-/* --- MODAL --- */
 .modal {
     display: none;
     position: fixed;
@@ -244,7 +257,6 @@ h2 {
     cursor: pointer;
 }
 
-/* --- FOOTER --- */
 footer {
     background-color: var(--white);
     padding: 80px 20px 40px 20px;
@@ -299,10 +311,10 @@ footer {
     letter-spacing: 1px;
 }
 
-/* --- MOBILANPASSNING --- */
 @media (max-width: 600px) {
     .modal-content { padding: 30px; }
-    .hero h1 { font-size: 2rem; }
+    .hero h1 { font-size: 2.2rem; }
+    header { padding: 100px 20px; }
     
     #newsletter-form {
         flex-direction: column;
@@ -311,9 +323,5 @@ footer {
     
     #newsletter-form input[type="email"] {
         max-width: 100%;
-    }
-    
-    .newsletter {
-        padding: 60px 20px;
     }
 }
